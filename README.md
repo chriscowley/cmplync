@@ -1,4 +1,5 @@
 # Cmplync
+[![Build Status](https://ci.chriscowley.me.uk/api/badges/chriscowley/cmplync/status.svg)](https://ci.chriscowley.me.uk/chriscowley/cmplync)
 
 Needs an environment file for the settings called `.envs`
 
