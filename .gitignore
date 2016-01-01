@@ -1,5 +1,4 @@
 #Flask
-config.py
 migrations/
 
 # Byte-compiled / optimized / DLL files
