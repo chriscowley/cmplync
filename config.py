@@ -1,5 +1,7 @@
 import os
-SQLALCHEMY_DATABASE_URI = os.get.env["SQLALCHEMY_DATABASE_URI","sqlite:////tmp/complyns.db"]
-SQLALCHEMY_TRACK_MODIFICATIONS = os.get.env["SQLALCHEMY_TRACK_MODIFICATIONS", True]
-DEBUG = os.get.env["CMPLYNC_DEBUG", True]
-SECRET_KEY = os.get.env["CMPLYNC_SECRET_KEY", "SOME SECRET"]
+print os.environ
+
+SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI", "sqlite:////tmp/complyns.db")
+SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get("SQLALCHEMY_TRACK_MODIFICATIONS", True)
+DEBUG = os.environ.get("CMPLYNC_DEBUG", True)
+SECRET_KEY = os.environ.get("CMPLYNC_SECRET_KEY", "SOME SECRET")
