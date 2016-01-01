@@ -16,5 +16,6 @@ def test():
     test_pep8()
     unit_tests()
 
+
 def run():
     local("python cmplync.py")

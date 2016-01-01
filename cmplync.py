@@ -15,8 +15,10 @@ app.config.from_pyfile('config.py')
 app.config.from_envvar('COMPLYNS_SETTINGS', silent=True)
 db = SQLAlchemy(app)
 
+
 def init_db():
   db.create_all()
+
 
 class CRUD():
 
