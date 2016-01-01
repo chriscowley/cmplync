@@ -3,13 +3,14 @@ import cmplync
 import unittest
 import tempfile
 
+
 class CmplyncTestCase(unittest.TestCase):
 
     def setUp(self):
         self.db_fd, cmplync.app.config['DATABASE'] = tempfile.mkstemp()
         cmplync.app.config['TESTING'] = True
         self.app = cmplync.app.test_client()
-#        cmplync.init_db()
+        cmplync.init_db()
 
     def tearDown(self):
         os.close(self.db_fd)

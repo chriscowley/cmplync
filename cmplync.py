@@ -4,9 +4,9 @@ from marshmallow import validate
 from flask import Flask, request, jsonify
 from flask.ext.restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
-
 from sqlalchemy.exc import SQLAlchemyError
 from marshmallow import ValidationError
+from contextlib import closing
 
 
 app = Flask(__name__)
@@ -15,6 +15,8 @@ app.config.from_pyfile('config.py')
 app.config.from_envvar('COMPLYNS_SETTINGS', silent=True)
 db = SQLAlchemy(app)
 
+def init_db():
+  db.create_all()
 
 class CRUD():
 
@@ -83,11 +85,11 @@ class PackagesAPI(Resource):
         raw_dict = request.get_json(force=True)
         try:
             package = Packages(
-                    raw_dict['package_name'],
-                    raw_dict['package_arch'],
-                    raw_dict['version_installed'],
-                    raw_dict['version_available'],
-                    raw_dict['fqdn'])
+                raw_dict['package_name'],
+                raw_dict['package_arch'],
+                raw_dict['version_installed'],
+                raw_dict['version_available'],
+                raw_dict['fqdn'])
             package.add(package)
             query = Packages.query.get(package.id)
             results = schema.dump(query).data
@@ -110,13 +112,12 @@ class PackagesUpdateAPI(Resource):
         results = schema.dump(package_query, many=True).data
         return results
 
-
     def put(self, package_name):
         app.logger.debug(
-                'request for to add package %s with data %s',
-                package_id,
-                request.form['data']
-                )
+            'request for to add package %s with data %s',
+            package_id,
+            request.form['data']
+        )
         packages[package_id] = request.form['data']
         return {package_id: packages[package_id]}
 
