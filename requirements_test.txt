@@ -3,3 +3,4 @@
 Fabric==1.10.2
 pytest-pep8==1.0.6
 unittest2==1.1.0
+Flask-Testing==0.4.2
