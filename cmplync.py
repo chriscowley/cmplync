@@ -129,7 +129,7 @@ def index():
     return "hello"
 
 
-api.add_resource(PackagesAPI, '/api/v1.0/packages/')
+api.add_resource(PackagesAPI, '/api/v1.0/packages')
 api.add_resource(PackagesUpdateAPI, '/api/v1.0/packages/<string:package_name>')
 
 if __name__ == "__main__":
